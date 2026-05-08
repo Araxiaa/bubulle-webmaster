@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-05-08T21:21:01.749326+00:00",
+    "exported_at": "2026-05-08T21:33:50.082274+00:00",
     "rp_date": null
   },
   "clans": {
@@ -256,22 +256,71 @@
     }
   },
   "herbarium": {
-    "Clan du Tonnerre": {
-      "total": 10,
-      "stocks": {
-        "Graines de Digitale": {
-          "qty": 2,
-          "urgent": 0
-        },
-        "Cataire": {
-          "qty": 2,
-          "urgent": 0
-        },
-        "Mousse": {
-          "qty": 6,
-          "urgent": 0
+    "inventories": {
+      "Clan du Tonnerre": {
+        "total": 10,
+        "stocks": {
+          "Graines de Digitale": {
+            "qty": 2,
+            "urgent": 0,
+            "lots": [
+              {
+                "qty": 2,
+                "added_by": "Petite Mygale",
+                "added_at": "2026-04-28 23:43:04",
+                "expires_at": "2026-05-28 23:43:04"
+              }
+            ]
+          },
+          "Cataire": {
+            "qty": 2,
+            "urgent": 0,
+            "lots": [
+              {
+                "qty": 2,
+                "added_by": "Petite Mygale",
+                "added_at": "2026-04-28 23:43:18",
+                "expires_at": "2026-05-28 23:43:18"
+              }
+            ]
+          },
+          "Mousse": {
+            "qty": 6,
+            "urgent": 0,
+            "lots": [
+              {
+                "qty": 6,
+                "added_by": "Petite Mygale",
+                "added_at": "2026-04-28 23:43:32",
+                "expires_at": "2026-05-28 23:43:32"
+              }
+            ]
+          }
         }
       }
+    },
+    "compost": {},
+    "healer_stats": {
+      "Clan du Tonnerre": [
+        {
+          "name": "Aube du Myosotis",
+          "stats": {
+            "cueillettes": 0,
+            "soins_reussis": 0,
+            "soins_rates": 0
+          }
+        }
+      ],
+      "Clan de l'Ombre": [
+        {
+          "name": "Illusion du Puceron",
+          "stats": {
+            "cueillettes": 0,
+            "soins_reussis": 0,
+            "soins_rates": 0
+          }
+        }
+      ]
     }
   }
 }

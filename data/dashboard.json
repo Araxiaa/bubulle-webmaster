@@ -1,125 +1,227 @@
 {
   "meta": {
-    "bot_name": "Bubulle",
-    "exported_at": "2026-05-08T17:58:50.696136+00:00",
-    "total_living_characters": 9
+    "exported_at": "2026-05-08T19:20:38.169022+00:00",
+    "rp_date": null
   },
-  "clan_statistics": {
+  "clans": {
     "Clan du Tonnerre": {
-      "population": 5,
-      "males": 2,
-      "femelles": 3,
-      "nb": 0
+      "ocs": [
+        {
+          "name": "Aube du Myosotis",
+          "rank": "Gu\u00e9risseur",
+          "gender": "Femelle",
+          "age": 46,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 50,
+          "max_hp": 50,
+          "is_dead": false
+        },
+        {
+          "name": "Etoile de Framboisier",
+          "rank": "Chef",
+          "gender": "M\u00e2le",
+          "age": 20,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 60,
+          "max_hp": 60,
+          "is_dead": false
+        },
+        {
+          "name": "Nuage de N\u00e9nuphar",
+          "rank": "Apprenti",
+          "gender": "Femelle",
+          "age": 10,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 25,
+          "max_hp": 25,
+          "is_dead": false
+        },
+        {
+          "name": "Patte de Ruisseau",
+          "rank": "Chaton",
+          "gender": "Femelle",
+          "age": 2,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        },
+        {
+          "name": "Petit Galopin",
+          "rank": "Chaton",
+          "gender": "M\u00e2le",
+          "age": 3,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        }
+      ],
+      "npcs": [
+        {
+          "name": "Douce S\u00e8ve",
+          "rank": "Guerrier",
+          "gender": "Femelle",
+          "age": 53,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        },
+        {
+          "name": "Echo des Bois",
+          "rank": "Guerrier",
+          "gender": "Femelle",
+          "age": 46,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        },
+        {
+          "name": "Racine de Bouleau",
+          "rank": "Guerrier",
+          "gender": "M\u00e2le",
+          "age": 53,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        }
+      ],
+      "stats": {
+        "total": 8,
+        "vivants": 8
+      }
     },
     "Clan de l'Ombre": {
-      "population": 2,
-      "males": 2,
-      "femelles": 0,
-      "nb": 0
+      "ocs": [
+        {
+          "name": "Boule d'Ecorce",
+          "rank": "Chaton",
+          "gender": "M\u00e2le",
+          "age": 4,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        },
+        {
+          "name": "Illusion du Puceron",
+          "rank": "Gu\u00e9risseur",
+          "gender": "M\u00e2le",
+          "age": 20,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 50,
+          "max_hp": 50,
+          "is_dead": false
+        }
+      ],
+      "npcs": [
+        {
+          "name": "Chant de Grenouille",
+          "rank": "Guerrier",
+          "gender": "Femelle",
+          "age": 36,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        },
+        {
+          "name": "Charme de Corneille",
+          "rank": "Guerrier",
+          "gender": "M\u00e2le",
+          "age": 36,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "vivants": 4
+      }
     },
     "Solitaires": {
-      "population": 1,
-      "males": 0,
-      "femelles": 1,
-      "nb": 0
+      "ocs": [
+        {
+          "name": "Peggy",
+          "rank": "Guerrier",
+          "gender": "Femelle",
+          "age": 63,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 50,
+          "max_hp": 50,
+          "is_dead": false
+        }
+      ],
+      "npcs": [],
+      "stats": {
+        "total": 1,
+        "vivants": 1
+      }
     },
     "Clan du Vent": {
-      "population": 1,
-      "males": 0,
-      "femelles": 1,
-      "nb": 0
+      "ocs": [
+        {
+          "name": "Petite Mygale",
+          "rank": "Chaton",
+          "gender": "Femelle",
+          "age": 4,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        }
+      ],
+      "npcs": [
+        {
+          "name": "Eclat Sombre",
+          "rank": "Guerrier",
+          "gender": "Femelle",
+          "age": 59,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        },
+        {
+          "name": "Griffe de Silex",
+          "rank": "Guerrier",
+          "gender": "M\u00e2le",
+          "age": 59,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        },
+        {
+          "name": "Reflet d'Ambre",
+          "rank": "Guerrier",
+          "gender": "M\u00e2le",
+          "age": 56,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        },
+        {
+          "name": "Souffle de Brume",
+          "rank": "Guerrier",
+          "gender": "M\u00e2le",
+          "age": 43,
+          "photo": "https://via.placeholder.com/150?text=Chat",
+          "hp": 10,
+          "max_hp": 10,
+          "is_dead": false
+        }
+      ],
+      "stats": {
+        "total": 5,
+        "vivants": 5
+      }
     }
-  },
-  "characters": [
-    {
-      "id": 7,
-      "name": "Aube du Myosotis",
-      "rank": "Guérisseur",
-      "clan": "Clan du Tonnerre",
-      "gender": "Femelle",
-      "age_lunes": 46,
-      "current_hp": 50,
-      "max_hp": 50
-    },
-    {
-      "id": 3,
-      "name": "Boule d'Ecorce",
-      "rank": "Chaton",
-      "clan": "Clan de l'Ombre",
-      "gender": "Mâle",
-      "age_lunes": 4,
-      "current_hp": 10,
-      "max_hp": 10
-    },
-    {
-      "id": 8,
-      "name": "Etoile de Framboisier",
-      "rank": "Chef",
-      "clan": "Clan du Tonnerre",
-      "gender": "Mâle",
-      "age_lunes": 20,
-      "current_hp": 60,
-      "max_hp": 60
-    },
-    {
-      "id": 16,
-      "name": "Illusion du Puceron",
-      "rank": "Guérisseur",
-      "clan": "Clan de l'Ombre",
-      "gender": "Mâle",
-      "age_lunes": 20,
-      "current_hp": 50,
-      "max_hp": 50
-    },
-    {
-      "id": 15,
-      "name": "Nuage de Nénuphar",
-      "rank": "Apprenti",
-      "clan": "Clan du Tonnerre",
-      "gender": "Femelle",
-      "age_lunes": 10,
-      "current_hp": 25,
-      "max_hp": 25
-    },
-    {
-      "id": 5,
-      "name": "Patte de Ruisseau",
-      "rank": "Chaton",
-      "clan": "Clan du Tonnerre",
-      "gender": "Femelle",
-      "age_lunes": 2,
-      "current_hp": 10,
-      "max_hp": 10
-    },
-    {
-      "id": 6,
-      "name": "Peggy",
-      "rank": "Guerrier",
-      "clan": "Solitaires",
-      "gender": "Femelle",
-      "age_lunes": 63,
-      "current_hp": 50,
-      "max_hp": 50
-    },
-    {
-      "id": 4,
-      "name": "Petit Galopin",
-      "rank": "Chaton",
-      "clan": "Clan du Tonnerre",
-      "gender": "Mâle",
-      "age_lunes": 3,
-      "current_hp": 10,
-      "max_hp": 10
-    },
-    {
-      "id": 2,
-      "name": "Petite Mygale",
-      "rank": "Chaton",
-      "clan": "Clan du Vent",
-      "gender": "Femelle",
-      "age_lunes": 4,
-      "current_hp": 10,
-      "max_hp": 10
-    }
-  ]
+  }
 }

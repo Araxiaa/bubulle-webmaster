@@ -1,6 +1,6 @@
 {
   "meta": {
-    "exported_at": "2026-05-08T20:48:55.856749+00:00",
+    "exported_at": "2026-05-08T21:18:48.067303+00:00",
     "rp_date": null
   },
   "clans": {
@@ -20,7 +20,7 @@
           "name": "Etoile de Framboisier",
           "rank": "Chef",
           "gender": "M\u00e2le",
-          "age": 20,
+          "age": 21,
           "photo": "https://via.placeholder.com/150?text=Chat",
           "hp": 60,
           "max_hp": 60,
@@ -62,7 +62,7 @@
           "name": "Douce S\u00e8ve",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 53,
+          "age": 54,
           "photo": "https://via.placeholder.com/150?text=Chat",
           "hp": 10,
           "max_hp": 10,
@@ -82,7 +82,7 @@
           "name": "Racine de Bouleau",
           "rank": "Guerrier",
           "gender": "M\u00e2le",
-          "age": 53,
+          "age": 54,
           "photo": "https://via.placeholder.com/150?text=Chat",
           "hp": 10,
           "max_hp": 10,

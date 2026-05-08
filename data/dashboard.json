@@ -1,6 +1,6 @@
 {
   "meta": {
-    "exported_at": "2026-05-08T20:09:07.767135+00:00",
+    "exported_at": "2026-05-08T20:45:41.360478+00:00",
     "rp_date": null
   },
   "clans": {
@@ -30,7 +30,7 @@
           "name": "Nuage de N\u00e9nuphar",
           "rank": "Apprenti",
           "gender": "Femelle",
-          "age": 10,
+          "age": 11,
           "photo": "https://via.placeholder.com/150?text=Chat",
           "hp": 25,
           "max_hp": 25,

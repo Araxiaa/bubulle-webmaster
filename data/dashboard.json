@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-05-08T21:34:20.598548+00:00",
+    "exported_at": "2026-05-08T22:00:51.286604+00:00",
     "rp_date": null
   },
   "clans": {
@@ -300,27 +300,10 @@
       }
     },
     "compost": {},
-    "healer_stats": {
-      "Clan du Tonnerre": [
-        {
-          "name": "Aube du Myosotis",
-          "stats": {
-            "cueillettes": 0,
-            "soins_reussis": 0,
-            "soins_rates": 0
-          }
-        }
-      ],
-      "Clan de l'Ombre": [
-        {
-          "name": "Illusion du Puceron",
-          "stats": {
-            "cueillettes": 0,
-            "soins_reussis": 0,
-            "soins_rates": 0
-          }
-        }
-      ]
-    }
+    "healer_stats": {}
+  },
+  "weather": {
+    "current": [],
+    "forecast": []
   }
 }

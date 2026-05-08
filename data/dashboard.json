@@ -1,6 +1,6 @@
 {
   "meta": {
-    "exported_at": "2026-05-08T19:26:21.363257+00:00",
+    "exported_at": "2026-05-08T20:09:07.767135+00:00",
     "rp_date": null
   },
   "clans": {
@@ -221,6 +221,25 @@
       "stats": {
         "total": 5,
         "vivants": 5
+      }
+    }
+  },
+  "herbarium": {
+    "Clan du Tonnerre": {
+      "total_plants": 10,
+      "stocks": {
+        "Graines de Digitale": {
+          "quantity": 2,
+          "expiring_soon": 0
+        },
+        "Cataire": {
+          "quantity": 2,
+          "expiring_soon": 0
+        },
+        "Mousse": {
+          "quantity": 6,
+          "expiring_soon": 0
+        }
       }
     }
   }

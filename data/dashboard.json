@@ -1,6 +1,7 @@
 {
   "meta": {
-    "exported_at": "2026-05-08T21:18:48.067303+00:00",
+    "bot_name": "Bubulle",
+    "exported_at": "2026-05-08T21:20:38.994171+00:00",
     "rp_date": null
   },
   "clans": {
@@ -8,90 +9,101 @@
       "ocs": [
         {
           "name": "Aube du Myosotis",
-          "rank": "Gu\u00e9risseur",
+          "rank": "Guérisseur",
           "gender": "Femelle",
           "age": 46,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=A",
           "hp": 50,
           "max_hp": 50,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Etoile de Framboisier",
           "rank": "Chef",
-          "gender": "M\u00e2le",
+          "gender": "Mâle",
           "age": 21,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 60,
           "max_hp": 60,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
-          "name": "Nuage de N\u00e9nuphar",
+          "name": "Nuage de Nénuphar",
           "rank": "Apprenti",
           "gender": "Femelle",
           "age": 11,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=N",
           "hp": 25,
           "max_hp": 25,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Patte de Ruisseau",
           "rank": "Chaton",
           "gender": "Femelle",
           "age": 2,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Petit Galopin",
           "rank": "Chaton",
-          "gender": "M\u00e2le",
+          "gender": "Mâle",
           "age": 3,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "npcs": [
         {
-          "name": "Douce S\u00e8ve",
+          "name": "Douce Sève",
           "rank": "Guerrier",
           "gender": "Femelle",
           "age": 54,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=D",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Echo des Bois",
           "rank": "Guerrier",
           "gender": "Femelle",
           "age": 46,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Racine de Bouleau",
           "rank": "Guerrier",
-          "gender": "M\u00e2le",
+          "gender": "Mâle",
           "age": 54,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=R",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "stats": {
         "total": 8,
-        "vivants": 8
+        "vivants": 8,
+        "males": 3,
+        "femelles": 5,
+        "nb": 0
       }
     },
     "Clan de l'Ombre": {
@@ -99,22 +111,24 @@
         {
           "name": "Boule d'Ecorce",
           "rank": "Chaton",
-          "gender": "M\u00e2le",
+          "gender": "Mâle",
           "age": 4,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=B",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Illusion du Puceron",
-          "rank": "Gu\u00e9risseur",
-          "gender": "M\u00e2le",
+          "rank": "Guérisseur",
+          "gender": "Mâle",
           "age": 20,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=I",
           "hp": 50,
           "max_hp": 50,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "npcs": [
@@ -123,25 +137,30 @@
           "rank": "Guerrier",
           "gender": "Femelle",
           "age": 36,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=C",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Charme de Corneille",
           "rank": "Guerrier",
-          "gender": "M\u00e2le",
+          "gender": "Mâle",
           "age": 36,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=C",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "stats": {
         "total": 4,
-        "vivants": 4
+        "vivants": 4,
+        "males": 3,
+        "femelles": 1,
+        "nb": 0
       }
     },
     "Solitaires": {
@@ -151,16 +170,20 @@
           "rank": "Guerrier",
           "gender": "Femelle",
           "age": 63,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 50,
           "max_hp": 50,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "npcs": [],
       "stats": {
         "total": 1,
-        "vivants": 1
+        "vivants": 1,
+        "males": 0,
+        "femelles": 1,
+        "nb": 0
       }
     },
     "Clan du Vent": {
@@ -170,10 +193,11 @@
           "rank": "Chaton",
           "gender": "Femelle",
           "age": 4,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "npcs": [
@@ -182,63 +206,70 @@
           "rank": "Guerrier",
           "gender": "Femelle",
           "age": 59,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Griffe de Silex",
           "rank": "Guerrier",
-          "gender": "M\u00e2le",
+          "gender": "Mâle",
           "age": 59,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=G",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Reflet d'Ambre",
           "rank": "Guerrier",
-          "gender": "M\u00e2le",
+          "gender": "Mâle",
           "age": 56,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=R",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         },
         {
           "name": "Souffle de Brume",
           "rank": "Guerrier",
-          "gender": "M\u00e2le",
+          "gender": "Mâle",
           "age": 43,
-          "photo": "https://via.placeholder.com/150?text=Chat",
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=S",
           "hp": 10,
           "max_hp": 10,
-          "is_dead": false
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "stats": {
         "total": 5,
-        "vivants": 5
+        "vivants": 5,
+        "males": 3,
+        "femelles": 2,
+        "nb": 0
       }
     }
   },
   "herbarium": {
     "Clan du Tonnerre": {
-      "total_plants": 10,
+      "total": 10,
       "stocks": {
         "Graines de Digitale": {
-          "quantity": 2,
-          "expiring_soon": 0
+          "qty": 2,
+          "urgent": 0
         },
         "Cataire": {
-          "quantity": 2,
-          "expiring_soon": 0
+          "qty": 2,
+          "urgent": 0
         },
         "Mousse": {
-          "quantity": 6,
-          "expiring_soon": 0
+          "qty": 6,
+          "urgent": 0
         }
       }
     }

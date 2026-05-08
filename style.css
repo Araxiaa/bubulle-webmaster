@@ -1,0 +1,148 @@
+/* --- VARIABLES DE THÈME --- */
+:root {
+    --bg-color: #0f1613; /* Vert forêt extrêmement sombre */
+    --card-bg: #1a251f; /* Vert sapin profond */
+    --border-color: #2c4035; /* Vert mousse */
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #d4af37; /* Doré pour le côté épique */
+    --accent-hover: #fcd34d;
+    --dead-color: #1e1e1e; /* Gris très sombre pour les morts */
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* --- STRUCTURE GLOBALE --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.back-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--accent-hover);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header h1 {
+    color: var(--accent);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* --- SECTIONS DES CLANS --- */
+.clan-section {
+    margin-bottom: 4rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.clan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.clan-header h2 {
+    color: var(--accent);
+    margin: 0;
+    font-size: 2rem;
+}
+
+.clan-stats {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+/* --- GRILLE ET CARTES --- */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.char-card {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.char-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    border-color: var(--accent);
+}
+
+.char-card.dead {
+    background-color: var(--dead-color);
+    opacity: 0.7;
+    filter: grayscale(80%);
+}
+
+.char-card.dead:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.char-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--border-color);
+    margin-bottom: 1rem;
+    background-color: #000;
+}
+
+.char-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-main);
+    font-size: 1.2rem;
+}
+
+.char-rank {
+    color: var(--accent);
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 1px;
+}
+
+.char-details {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}

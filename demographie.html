@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démographie — Chroniques des Clans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+        
+        <div class="page-header">
+            <h1>Registres de la Forêt</h1>
+            <p id="rp-date-display" style="font-style: italic; color: var(--text-muted);">
+                Bubulle interroge les esprits... (Chargement)
+            </p>
+        </div>
+
+        <div id="clans-container">
+            </div>
+    </div>
+
+    <script>
+        // Dès que la page s'ouvre, on lance la recherche
+        document.addEventListener("DOMContentLoaded", loadDemographie);
+
+        async function loadDemographie() {
+            try {
+                // On va lire le fichier que Bubulle a déposé dans le dossier "data"
+                const response = await fetch('data/dashboard.json');
+                
+                if (!response.ok) {
+                    throw new Error("Impossible de trouver le fichier dashboard.json");
+                }
+                
+                const data = await response.json();
+                
+                // 1. Mise à jour de la date RP
+                const dateDisplay = document.getElementById('rp-date-display');
+                if (data.meta && data.meta.rp_date) {
+                    dateDisplay.innerHTML = `Date RP actuelle : <strong>${data.meta.rp_date.month}</strong> (An ${data.meta.rp_date.year}, ${data.meta.rp_date.season})`;
+                } else {
+                    dateDisplay.innerText = "Date RP : Le temps semble figé...";
+                }
+
+                // 2. Création des sections de clans
+                const container = document.getElementById('clans-container');
+                container.innerHTML = ""; // On nettoie le texte de chargement
+                
+                for (const [clanName, clanInfo] of Object.entries(data.clans)) {
+                    const section = document.createElement('section');
+                    section.className = "clan-section";
+                    
+                    // On fusionne les OCs et PNJs, et on met les vivants en premier
+                    let allMembers = [...clanInfo.ocs, ...clanInfo.npcs];
+                    allMembers.sort((a, b) => a.is_dead - b.is_dead);
+
+                    // On génère le code HTML pour chaque carte de personnage
+                    let cardsHTML = allMembers.map(char => `
+                        <div class="char-card ${char.is_dead ? 'dead' : ''}">
+                            <img src="${char.photo}" alt="Photo de ${char.name}" class="char-avatar" onerror="this.src='https://via.placeholder.com/150/1a251f/d4af37?text=🐾'">
+                            <h4>${char.name} ${char.is_dead ? '⚰️' : ''}</h4>
+                            <p class="char-rank">${char.rank}</p>
+                            <p class="char-details">${char.age} lunes • ${char.gender}</p>
+                        </div>
+                    `).join('');
+
+                    // On injecte le tout dans la section du clan
+                    section.innerHTML = `
+                        <div class="clan-header">
+                            <h2>${clanName}</h2>
+                            <div class="clan-stats">
+                                <strong>${clanInfo.stats.vivants}</strong> vivants sur un total de ${clanInfo.stats.total} chats<br>
+                                ♂️ ${clanInfo.stats.males} • ♀️ ${clanInfo.stats.femelles} • ⚧️ ${clanInfo.stats.nb}
+                            </div>
+                        </div>
+                        <div class="character-grid">
+                            ${cardsHTML}
+                        </div>
+                    `;
+                    container.appendChild(section);
+                }
+            } catch (error) {
+                console.error("Erreur de chargement :", error);
+                document.getElementById('clans-container').innerHTML = `
+                    <div style="text-align: center; color: var(--accent);">
+                        <p>Oups ! Les registres sont inaccessibles pour le moment.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">${error.message}</p>
+                    </div>`;
+            }
+        }
+    </script>
+</body>
+</html>

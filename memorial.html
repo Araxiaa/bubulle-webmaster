@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémorial — Chroniques des Clans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="memorial-container">
+    <div class="container">
+        <a href="index.html" class="back-link">← Retour au Hub</a>
+        
+        <div class="page-header memorial-header">
+            <h1 class="cinzel">Le Clan des Étoiles</h1>
+            <p style="color: var(--text-dim); font-style: italic;">
+                "Ceux qui marchent désormais dans les cieux argentés."
+            </p>
+        </div>
+
+        <div id="memorial-content">
+            </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", loadMemorial);
+
+        async function loadMemorial() {
+            try {
+                const response = await fetch('data/dashboard.json');
+                const data = await response.json();
+                const container = document.getElementById('memorial-content');
+                
+                let allDead = [];
+                // On récupère tous les morts de tous les clans
+                for (const clan of Object.values(data.clans)) {
+                    const deadInClan = [...clan.ocs, ...clan.npcs].filter(m => m.is_dead);
+                    allDead = allDead.concat(deadInClan);
+                }
+
+                if (allDead.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-stars">
+                            <p>Le ciel est calme ce soir... Aucune étoile n'a rejoint le Clan des Étoiles récemment.</p>
+                            <p style="font-size: 0.8rem; margin-top: 10px;">(Tous les personnages sont actuellement en vie)</p>
+                        </div>`;
+                    return;
+                }
+
+                // Affichage des cartes (si des morts existent)
+                container.innerHTML = `<div class="character-grid">` + 
+                    allDead.map(m => `
+                        <div class="char-card ghost-card">
+                            <img src="assets/photos/${m.name}.png" class="char-avatar" onerror="this.src='https://via.placeholder.com/150/050505/c5a059?text=✨'">
+                            <h4>${m.name}</h4>
+                            <p class="char-rank">${m.rank}</p>
+                            <p class="char-details">Âge au trépas : ${m.age} lunes</p>
+                            </div>
+                    `).join('') + `</div>`;
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>

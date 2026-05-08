@@ -2,30 +2,116 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Bubulle Hub — Chroniques des Clans</title>
-    <link rel="stylesheet" href="style.css"> </head>
-<body>
-    <div class="hero">
-        <h1>Bienvenue, voyageur des Clans</h1>
-        <p>Consultez les registres de Bubulle pour connaître l'état de la forêt.</p>
-        
-        <div class="nav-grid">
-            <a href="demographie.html" class="nav-card">
-                <div class="icon">📊</div>
-                <h3>Démographie</h3>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Hub — Le Prix de la Trêve</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="hub-body">
+
+    <div class="bubbles-container">
+        <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        <div class="bubble"></div><div class="bubble"></div>
+    </div>
+
+    <div class="update-bell" onclick="toggleUpdates()">
+        🔔 <span class="bell-badge">1</span>
+    </div>
+
+    <div id="update-modal" class="modal-overlay" onclick="closeUpdates(event)">
+        <div class="modal-content">
+            <button class="close-btn" onclick="toggleUpdates()">&times;</button>
+            <h2 class="cinzel" style="color: var(--accent); margin-bottom: 1.5rem; text-align: center;">Mises à jour</h2>
+            <ul class="changelog">
+                <li>
+                    <span class="changelog-date">Aujourd'hui</span>
+                    <strong>Thème Océanique 🫧</strong>
+                    <p>Le site fait peau neuve avec de nouvelles couleurs aquatiques en l'honneur de Bubulle ! Ajout du journal des mises à jour.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="hub-hero">
+        <div class="hero-content">
+            <h1 class="cinzel glow-text">Le Prix de la Trêve</h1>
+            <p class="hero-subtitle">Les registres de la forêt, protégés par l'esprit de la rivière</p>
+            <div class="separator">✧ 🫧 ✧</div>
+        </div>
+    </header>
+
+    <main class="hub-main">
+        <div class="elegant-grid">
+            <a href="demographie.html" class="elegant-card">
+                <div class="card-icon">📊</div>
+                <h3 class="cinzel">Démographie</h3>
                 <p>Effectifs, âges et visages des clans.</p>
             </a>
-            <a href="https://araxiaa.github.io/arbre-g-n-alogique-des-clans/" class="nav-card">
-                <div class="icon">🌳</div>
-                <h3>Généalogie</h3>
+            <a href="https://araxiaa.github.io/arbre-g-n-alogique-des-clans/" class="elegant-card" target="_blank">
+                <div class="card-icon">🌳</div>
+                <h3 class="cinzel">Généalogie</h3>
                 <p>L'arbre sacré des familles.</p>
             </a>
-            <a href="https://araxiaa.github.io/chronique-des-clans/" class="nav-card">
-                <div class="icon">📜</div>
-                <h3>Chroniques</h3>
-                <p>Les histoires et légendes des clans.</p>
+            <a href="https://araxiaa.github.io/chronique-des-clans/" class="elegant-card" target="_blank">
+                <div class="card-icon">📜</div>
+                <h3 class="cinzel">Chroniques</h3>
+                <p>Les légendes de la forêt.</p>
             </a>
+            <a href="herboristerie.html" class="elegant-card">
+                <div class="card-icon">🌿</div>
+                <h3 class="cinzel">Herboristerie</h3>
+                <p>Le registre des guérisseurs.</p>
+            </a>
+            <a href="meteo.html" class="elegant-card">
+                <div class="card-icon">☁️</div>
+                <h3 class="cinzel">Station Météo</h3>
+                <p>Les prévisions des cieux.</p>
+            </a>
+            <a href="memorial.html" class="elegant-card">
+                <div class="card-icon">✨</div>
+                <h3 class="cinzel">Mémorial</h3>
+                <p>L'honneur aux disparus.</p>
+            </a>
+        </div>
+    </main>
+
+    <section class="bubulle-legacy">
+        <div class="container">
+            <div class="legacy-card">
+                <div class="legacy-header">
+                    <span class="legacy-icon">🐟</span>
+                    <h2 class="cinzel">L'Âme de Bubulle</h2>
+                </div>
+                <div class="legacy-content">
+                    <p>
+                        Bubulle n'est pas qu'un simple bot ; elle est l'effigie d'une petite <strong>Loche Léopard</strong> dont l'histoire nous rappelle l'importance de la <strong>prévention contre la maltraitance animale</strong>. Que ce soit sur terre ou sous l'eau, chaque être mérite respect et protection.
+                    </p>
+                    <p>
+                        Née de la passion d'<strong>Araxia</strong> pour le développement et de l'imagination fertile de <strong>Chry</strong> pour l'univers, elle grandit chaque jour grâce au travail constant du staff et de sa communauté.
+                    </p>
+                </div>
             </div>
-    </div>
+        </div>
+    </section>
+
+    <footer class="hub-footer">
+        <div class="footer-separator"></div>
+        <p class="cinzel credits-main">Propulsé par <strong>Bubulle</strong> • Développé par <strong>Araxia</strong></p>
+        <p class="credits-sub">Design & Univers par <strong>Chry</strong> & le Staff de Le Prix de la Trêve © 2026</p>
+    </footer>
+
+    <script>
+        function toggleUpdates() {
+            const modal = document.getElementById('update-modal');
+            modal.classList.toggle('active');
+            // Cache le petit "1" quand on ouvre la cloche
+            document.querySelector('.bell-badge').style.display = 'none';
+        }
+        function closeUpdates(e) {
+            if(e.target.id === 'update-modal') {
+                toggleUpdates();
+            }
+        }
+    </script>
 </body>
 </html>

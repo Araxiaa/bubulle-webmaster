@@ -12,83 +12,271 @@
         
         <div class="page-header">
             <h1>Registres de la Forêt</h1>
-            <p id="rp-date-display" style="font-style: italic; color: var(--text-muted);">
-                Bubulle interroge les esprits... (Chargement)
+            <p id="rp-date-display" style="font-style: italic; color: var(--text-dim);">
+                Bubulle interroge les esprits...
             </p>
+        </div>
+
+        <div id="quick-nav-container" class="quick-nav"></div>
+
+        <input type="text" id="search-bar" class="search-bar" placeholder="🔍 Rechercher un chat..." oninput="renderClans(currentCriteria)">
+
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterMembers('all')">Tous</button>
+            <button class="filter-btn" onclick="filterMembers('guerrier')">Guerriers</button>
+            <button class="filter-btn" onclick="filterMembers('apprenti')">Apprentis</button>
+            <button class="filter-btn" onclick="filterMembers('chaton')">Chatons</button>
+            <button class="filter-btn" onclick="filterMembers('ancien')">Anciens</button>
+            <button class="filter-btn" onclick="filterMembers('mort')">Morts</button>
         </div>
 
         <div id="clans-container">
             </div>
     </div>
 
+    <div id="panel-overlay" class="panel-overlay" onclick="closePanel()"></div>
+    <div id="side-panel" class="side-panel">
+        <button class="close-btn" onclick="closePanel()">&times;</button>
+        <img id="panel-img" src="" alt="Avatar" class="panel-avatar" onerror="this.src='https://via.placeholder.com/150/141414/c5a059?text=🐾'">
+        
+        <div class="char-badges" style="justify-content: center; gap: 10px; margin-bottom: 10px;">
+            <span id="panel-type" class="badge">OC</span>
+            <span id="panel-gender-icon" class="gender-icon">♂️</span>
+        </div>
+        
+        <h2 id="panel-name" class="panel-name">Nom du Chat</h2>
+        <div id="panel-rank" class="panel-rank">Rang • Clan</div>
+
+        <div class="panel-section">
+            <h3>Santé & Points de Vie</h3>
+            <div class="hp-bar-container">
+                <div id="panel-hp-fill" class="hp-fill"></div>
+            </div>
+            <div style="text-align: right; font-size: 0.85rem; color: var(--text-dim);" id="panel-hp-text">
+                50 / 50 PV
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <h3>Informations</h3>
+            <p style="margin: 0; color: var(--text-dim);"><strong>Âge :</strong> <span id="panel-age"></span> lunes</p>
+            <p style="margin: 5px 0 0 0; color: var(--text-dim);"><strong>Sexe :</strong> <span id="panel-gender-text"></span></p>
+        </div>
+    </div>
+
     <script>
-        // Dès que la page s'ouvre, on lance la recherche
+        let globalData = null; 
+        let currentCriteria = 'all'; // Mémorise le filtre actuel
+
         document.addEventListener("DOMContentLoaded", loadDemographie);
 
         async function loadDemographie() {
             try {
-                // On va lire le fichier que Bubulle a déposé dans le dossier "data"
                 const response = await fetch('data/dashboard.json');
+                if (!response.ok) throw new Error("Fichier introuvable");
+                globalData = await response.json();
                 
-                if (!response.ok) {
-                    throw new Error("Impossible de trouver le fichier dashboard.json");
-                }
-                
-                const data = await response.json();
-                
-                // 1. Mise à jour de la date RP
                 const dateDisplay = document.getElementById('rp-date-display');
-                if (data.meta && data.meta.rp_date) {
-                    dateDisplay.innerHTML = `Date RP actuelle : <strong>${data.meta.rp_date.month}</strong> (An ${data.meta.rp_date.year}, ${data.meta.rp_date.season})`;
-                } else {
-                    dateDisplay.innerText = "Date RP : Le temps semble figé...";
+                if (globalData.meta.rp_date) {
+                    const d = globalData.meta.rp_date;
+                    dateDisplay.innerText = `Lune actuelle : ${d.month} (An ${d.year}, ${d.season})`;
+                }
+                
+                buildQuickNav(); // Construit le menu des clans
+                renderClans('all'); 
+            } catch (error) {
+                document.getElementById('clans-container').innerHTML = 
+                    `<p style="text-align:center; color: var(--accent-gold);">Oups ! Les registres sont inaccessibles.</p>`;
+            }
+        }
+
+        // Génère le sommaire avec des liens d'ancrage (ex: #clan-du-tonnerre)
+        function buildQuickNav() {
+            const navContainer = document.getElementById('quick-nav-container');
+            navContainer.innerHTML = "";
+            for (const clanName of Object.keys(globalData.clans)) {
+                const clanId = 'clan-' + clanName.replace(/\s+/g, '-').toLowerCase();
+                navContainer.innerHTML += `<a href="#${clanId}" class="quick-nav-link">${clanName}</a>`;
+            }
+        }
+
+        function filterMembers(criteria) {
+            currentCriteria = criteria;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(criteria) || (criteria === 'all' && btn.innerText === 'Tous')) {
+                    btn.classList.add('active');
+                }
+            });
+            renderClans(criteria);
+        }
+
+        function generateStatsHTML(members) {
+            const living = members.filter(m => !m.is_dead);
+            if (living.length === 0) return "";
+
+            const ages = {"0-6": 0, "6-12": 0, "12-30": 0, "30-60": 0, "60-90": 0, "90-110": 0, "110+": 0};
+            const ranks = {"Chef/Lieut": 0, "Guérisseur": 0, "Guerrier": 0, "Apprenti": 0, "Chaton": 0, "Ancien": 0, "Autre": 0};
+
+            living.forEach(m => {
+                let a = m.age;
+                if (a === "À naître" || a < 6) ages["0-6"]++;
+                else if (a < 12) ages["6-12"]++;
+                else if (a < 30) ages["12-30"]++;
+                else if (a < 60) ages["30-60"]++;
+                else if (a < 90) ages["60-90"]++;
+                else if (a < 110) ages["90-110"]++;
+                else ages["110+"]++;
+
+                let r = m.rank.toLowerCase();
+                if (r.includes("chef") || r.includes("lieutenant")) ranks["Chef/Lieut"]++;
+                else if (r.includes("guérisseur") || r.includes("guerisseur") || r.includes("medecin")) ranks["Guérisseur"]++;
+                else if (r.includes("guerrier")) ranks["Guerrier"]++;
+                else if (r.includes("apprenti")) ranks["Apprenti"]++;
+                else if (r.includes("chaton")) ranks["Chaton"]++;
+                else if (r.includes("ancien")) ranks["Ancien"]++;
+                else ranks["Autre"]++;
+            });
+
+            const total = living.length;
+            const ageColors = {"0-6":"#a7f3d0", "6-12":"#34d399", "12-30":"#3b82f6", "30-60":"#6366f1", "60-90":"#8b5cf6", "90-110":"#d946ef", "110+":"#f43f5e"};
+            const rankColors = {"Chef/Lieut":"#fbbf24", "Guérisseur":"#10b981", "Guerrier":"#3b82f6", "Apprenti":"#8b5cf6", "Chaton":"#f472b6", "Ancien":"#9ca3af", "Autre":"#71717a"};
+
+            function buildBar(dataObj, colors) {
+                let barHTML = `<div class="stat-bar">`;
+                let labelsHTML = `<div class="stat-labels">`;
+                for (let [key, val] of Object.entries(dataObj)) {
+                    if (val > 0) {
+                        let pct = (val / total) * 100;
+                        let col = colors[key];
+                        barHTML += `<div class="stat-segment" style="width: ${pct}%; background-color: ${col};" title="${key}: ${val}"></div>`;
+                        labelsHTML += `<div class="stat-label-item"><div class="stat-dot" style="background-color: ${col};"></div>${key} (${val})</div>`;
+                    }
+                }
+                return barHTML + `</div>` + labelsHTML + `</div>`;
+            }
+
+            return `
+                <div class="clan-dashboard">
+                    <div class="stat-group"><div class="stat-title">Pyramide des Âges (Lunes)</div>${buildBar(ages, ageColors)}</div>
+                    <div class="stat-group"><div class="stat-title">Répartition des Rangs</div>${buildBar(ranks, rankColors)}</div>
+                </div>
+            `;
+        }
+
+        function renderClans(criteria) {
+            const container = document.getElementById('clans-container');
+            container.innerHTML = "";
+            
+            // On récupère le texte tapé dans la barre de recherche
+            const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+
+            for (const [clanName, clanInfo] of Object.entries(globalData.clans)) {
+                let ocs = clanInfo.ocs.map(o => ({...o, type: 'OC', clan: clanName}));
+                let npcs = clanInfo.npcs.map(n => ({...n, type: 'PNJ', clan: clanName}));
+                let allMembers = [...ocs, ...npcs];
+
+                const statsHTML = generateStatsHTML(allMembers);
+
+                let filteredMembers = allMembers;
+                
+                // 1. Filtrage par bouton (Guerrier, Apprenti...)
+                if (criteria === 'mort') filteredMembers = filteredMembers.filter(m => m.is_dead);
+                else if (criteria !== 'all') filteredMembers = filteredMembers.filter(m => !m.is_dead && m.rank.toLowerCase().includes(criteria));
+
+                // 2. Filtrage par barre de recherche (Nom du chat)
+                if (searchQuery !== "") {
+                    filteredMembers = filteredMembers.filter(m => m.name.toLowerCase().includes(searchQuery));
                 }
 
-                // 2. Création des sections de clans
-                const container = document.getElementById('clans-container');
-                container.innerHTML = ""; // On nettoie le texte de chargement
+                if (filteredMembers.length === 0) continue;
+
+                const section = document.createElement('section');
+                section.className = "clan-section";
                 
-                for (const [clanName, clanInfo] of Object.entries(data.clans)) {
-                    const section = document.createElement('section');
-                    section.className = "clan-section";
-                    
-                    // On fusionne les OCs et PNJs, et on met les vivants en premier
-                    let allMembers = [...clanInfo.ocs, ...clanInfo.npcs];
-                    allMembers.sort((a, b) => a.is_dead - b.is_dead);
+                // Ancre pour le sommaire rapide
+                section.id = 'clan-' + clanName.replace(/\s+/g, '-').toLowerCase(); 
+                
+                const cardsHTML = filteredMembers.map(m => {
+                    let genderIcon = "⚧️";
+                    let genderClass = "gender-nb";
+                    if (m.gender === "Mâle") { genderIcon = "♂️"; genderClass = "gender-male"; }
+                    if (m.gender === "Femelle") { genderIcon = "♀️"; genderClass = "gender-female"; }
 
-                    // On génère le code HTML pour chaque carte de personnage
-                    let cardsHTML = allMembers.map(char => `
-                        <div class="char-card ${char.is_dead ? 'dead' : ''}">
-                            <img src="${char.photo}" alt="Photo de ${char.name}" class="char-avatar" onerror="this.src='https://via.placeholder.com/150/1a251f/d4af37?text=🐾'">
-                            <h4>${char.name} ${char.is_dead ? '⚰️' : ''}</h4>
-                            <p class="char-rank">${char.rank}</p>
-                            <p class="char-details">${char.age} lunes • ${char.gender}</p>
-                        </div>
-                    `).join('');
+                    let photoPath = `assets/photos/${m.name}.png`;
 
-                    // On injecte le tout dans la section du clan
-                    section.innerHTML = `
-                        <div class="clan-header">
-                            <h2>${clanName}</h2>
-                            <div class="clan-stats">
-                                <strong>${clanInfo.stats.vivants}</strong> vivants sur un total de ${clanInfo.stats.total} chats<br>
-                                ♂️ ${clanInfo.stats.males} • ♀️ ${clanInfo.stats.femelles} • ⚧️ ${clanInfo.stats.nb}
+                    // C'est ici que l'on ajoute le loading="lazy" pour la fluidité !
+                    return `
+                        <div class="char-card ${m.is_dead ? 'dead' : ''}" onclick="openPanel('${m.name}', '${clanName}')">
+                            <div class="char-badges">
+                                <span class="badge ${m.type === 'OC' ? 'badge-oc' : 'badge-pnj'}">${m.type}</span>
+                                <span class="gender-icon ${genderClass}">${genderIcon}</span>
                             </div>
-                        </div>
-                        <div class="character-grid">
-                            ${cardsHTML}
+                            <img src="${photoPath}" class="char-avatar" loading="lazy" onerror="this.src='https://via.placeholder.com/150/141414/c5a059?text=🐾'">
+                            <h4>${m.name} ${m.is_dead ? '⚰️' : ''}</h4>
+                            <p class="char-rank">${m.rank}</p>
+                            <p class="char-details">${m.age} lunes</p>
                         </div>
                     `;
-                    container.appendChild(section);
-                }
-            } catch (error) {
-                console.error("Erreur de chargement :", error);
-                document.getElementById('clans-container').innerHTML = `
-                    <div style="text-align: center; color: var(--accent);">
-                        <p>Oups ! Les registres sont inaccessibles pour le moment.</p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">${error.message}</p>
-                    </div>`;
+                }).join('');
+
+                section.innerHTML = `
+                    <div class="clan-header">
+                        <h2>${clanName}</h2>
+                        <div class="clan-stats">${filteredMembers.length} affiché(s)</div>
+                    </div>
+                    ${statsHTML}
+                    <div class="character-grid">${cardsHTML}</div>
+                `;
+                container.appendChild(section);
             }
+        }
+
+        // --- LOGIQUE DU PANNEAU LATÉRAL ---
+        function openPanel(charName, clanName) {
+            const clanData = globalData.clans[clanName];
+            const allMembers = [...clanData.ocs.map(o=>({...o, type:'OC'})), ...clanData.npcs.map(n=>({...n, type:'PNJ'}))];
+            const char = allMembers.find(m => m.name === charName);
+            
+            if (!char) return;
+
+            document.getElementById('panel-img').src = `assets/photos/${char.name}.png`;
+            document.getElementById('panel-name').innerText = char.name + (char.is_dead ? ' ⚰️' : '');
+            document.getElementById('panel-rank').innerText = `${char.rank} • ${clanName}`;
+            document.getElementById('panel-age').innerText = char.age;
+            document.getElementById('panel-gender-text').innerText = char.gender;
+            
+            const typeBadge = document.getElementById('panel-type');
+            typeBadge.innerText = char.type;
+            typeBadge.className = `badge ${char.type === 'OC' ? 'badge-oc' : 'badge-pnj'}`;
+
+            const genderIcon = document.getElementById('panel-gender-icon');
+            if (char.gender === "Mâle") { genderIcon.innerText = "♂️"; genderIcon.className = "gender-icon gender-male"; }
+            else if (char.gender === "Femelle") { genderIcon.innerText = "♀️"; genderIcon.className = "gender-icon gender-female"; }
+            else { genderIcon.innerText = "⚧️"; genderIcon.className = "gender-icon gender-nb"; }
+
+            const hpFill = document.getElementById('panel-hp-fill');
+            const hpText = document.getElementById('panel-hp-text');
+            const hp = char.hp || 0;
+            const maxHp = char.max_hp || 1; 
+            let pct = (hp / maxHp) * 100;
+            
+            hpFill.style.width = `${pct}%`;
+            hpFill.className = "hp-fill"; 
+            
+            if (char.is_dead || hp <= 0) hpFill.classList.add("dead");
+            else if (pct <= 25) hpFill.classList.add("critical");
+            else if (pct <= 50) hpFill.classList.add("medium");
+            
+            hpText.innerText = char.is_dead ? "Décédé(e)" : `${hp} / ${maxHp} PV`;
+
+            document.getElementById('side-panel').classList.add('open');
+            document.getElementById('panel-overlay').classList.add('active');
+        }
+
+        function closePanel() {
+            document.getElementById('side-panel').classList.remove('open');
+            document.getElementById('panel-overlay').classList.remove('active');
         }
     </script>
 </body>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herboristerie — Chroniques des Clans</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .plant-cat-badge { font-size: 0.65rem; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; margin-bottom: 8px; display: inline-block; }
+        .cat-soin { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; }
+        .cat-neutre { background: rgba(148, 163, 184, 0.2); color: #94a3b8; border: 1px solid #94a3b8; }
+        .cat-toxique { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
+        .cat-inconnu { background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid #fff; }
+        .plant-desc { font-size: 0.8rem; color: var(--text-dim); margin-top: 10px; font-style: italic; border-top: 1px dashed var(--border-light); padding-top: 8px; }
+        
+        .plant-card { cursor: pointer; } /* Indique qu'on peut cliquer ! */
+        .plant-card.compost { filter: grayscale(80%); border-color: #444; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+        
+        <div class="page-header">
+            <h1>L'Antre des Guérisseurs</h1>
+            <p id="rp-date-display" style="font-style: italic; color: var(--text-dim);">Inspection en cours...</p>
+        </div>
+
+        <div class="view-tabs">
+            <button class="view-tab-btn active" id="btn-inventories" onclick="switchView('inventories')">🌿 Tanières</button>
+            <button class="view-tab-btn" id="btn-compost" onclick="switchView('compost')">🍂 Compost</button>
+            <button class="view-tab-btn" id="btn-stats" onclick="switchView('stats')">📊 Statistiques</button>
+        </div>
+
+        <div id="tools-section">
+            <input type="text" id="search-bar" class="search-bar" placeholder="🔍 Chercher une plante..." oninput="applyFilters()">
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="setCategoryFilter('all')">Toutes</button>
+                <button class="filter-btn" onclick="setCategoryFilter('soin')">Soins</button>
+                <button class="filter-btn" onclick="setCategoryFilter('neutre')">Neutres</button>
+                <button class="filter-btn" onclick="setCategoryFilter('toxique')">Toxiques</button>
+            </div>
+            <div id="quick-nav-container" class="quick-nav"></div>
+        </div>
+
+        <div id="main-container"></div>
+    </div>
+
+    <div id="panel-overlay" class="panel-overlay" onclick="closePanel()"></div>
+    <div id="side-panel" class="side-panel">
+        <button class="close-btn" onclick="closePanel()">&times;</button>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div id="panel-plant-icon" style="font-size: 4rem; margin-bottom: 10px;">🌿</div>
+            <span id="panel-plant-cat" class="plant-cat-badge">SOIN</span>
+            <h2 id="panel-plant-name" class="cinzel" style="color: var(--accent-gold); font-size: 2rem;">Nom de la Plante</h2>
+            <p id="panel-plant-owner" style="color: var(--text-dim); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Clan</p>
+        </div>
+
+        <div class="panel-section">
+            <h3>Description du Codex</h3>
+            <p id="panel-plant-desc" style="color: var(--text-main); font-style: italic; font-size: 0.9rem; margin: 0;"></p>
+        </div>
+
+        <div class="panel-section">
+            <h3>Lots en réserve (<span id="panel-total-qty">0</span>)</h3>
+            <div id="panel-lots-container">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        const MAX_PLANT_LIMIT = 20; 
+        let globalHerbarium = null;
+        let currentView = 'inventories'; // 'inventories', 'compost', 'stats'
+        let currentCat = 'all';
+
+        const PLANT_CODEX = {
+            "Achillée Millefeuille": { icon: "🌿", cat: "soin", desc: "Antidote et nettoyage de plaie." },
+            "Bardane": { icon: "🥔", cat: "soin", desc: "Infections de morsures." },
+            "Bourrache": { icon: "🌸", cat: "soin", desc: "+1 PV pour reines allaitantes." },
+            "Cataire": { icon: "✨", cat: "soin", desc: "Maladies graves. La plus puissante." },
+            "Cerfeuil": { icon: "🌿", cat: "soin", desc: "Infections internes et douleurs." },
+            "Consoude": { icon: "🌿", cat: "soin", desc: "Fractures, tendons et plaies profondes." },
+            "Écorce de Saule": { icon: "🪵", cat: "soin", desc: "Analgésique, soulage la douleur." },
+            "Graines de Coquelicot": { icon: "🏵️", cat: "soin", desc: "Soulagement de la douleur." },
+            "Menthe Aquatique": { icon: "🌱", cat: "soin", desc: "Maux de ventre et nausées légères." },
+            "Plantain": { icon: "🍃", cat: "soin", desc: "Irritations mineures et petites plaies." },
+            "Prêle": { icon: "🌾", cat: "soin", desc: "Nettoyage de plaies infectées." },
+            "Souci": { icon: "🌼", cat: "soin", desc: "Traitement de l'infection cutanée." },
+            "Tanaisie": { icon: "🌿", cat: "soin", desc: "Toux persistante et articulations." },
+            "Toile d'Araignée": { icon: "🕸️", cat: "soin", desc: "Arrêt du saignement." },
+            "Verge d'Or": { icon: "🌻", cat: "soin", desc: "Cicatrisation des plaies récentes." },
+            "Baies de Genévrier": { icon: "🫐", cat: "soin", desc: "Douleurs abdominales et respiration." },
+            "Mousse": { icon: "🟩", cat: "neutre", desc: "Litière confortable, isolation." },
+            "Fougère": { icon: "🌿", cat: "neutre", desc: "Camouflage et confort." },
+            "Écorce de Pin": { icon: "🪵", cat: "neutre", desc: "Aucun effet mécanique." },
+            "Feuilles de Chêne": { icon: "🍂", cat: "neutre", desc: "Aucun effet mécanique." },
+            "Baies d'If": { icon: "🍒", cat: "toxique", desc: "TRÈS DANGEREUX (-10 PV)." },
+            "Grande Ciguë": { icon: "☠️", cat: "toxique", desc: "DANGEREUX (-8 PV)." },
+            "Graines de Digitale": { icon: "🥀", cat: "toxique", desc: "DANGEREUX (-8 PV)." },
+            "Morelle Noire": { icon: "🫐", cat: "toxique", desc: "Toxique (-5 PV)." },
+            "Aconit": { icon: "☠️", cat: "toxique", desc: "Tue-Loup. TRÈS DANGEREUX (-10 PV)." },
+            "Tanaisie en excès": { icon: "🤢", cat: "toxique", desc: "Surdosage de Tanaisie (-3 PV)." }
+        };
+
+        function getCodex(name) {
+            return PLANT_CODEX[name] || { icon: "❓", cat: "inconnu", desc: "Propriétés inconnues dans les archives." };
+        }
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr);
+            return d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadData);
+
+        async function loadData() {
+            try {
+                const response = await fetch('data/dashboard.json');
+                if (!response.ok) throw new Error("Fichier introuvable");
+                const data = await response.json();
+                
+                if (data.meta.rp_date) {
+                    const d = data.meta.rp_date;
+                    document.getElementById('rp-date-display').innerText = `Lune actuelle : ${d.month} (An ${d.year}, ${d.season})`;
+                }
+
+                globalHerbarium = data.herbarium;
+                if (!globalHerbarium) throw new Error("Données d'herboristerie absentes.");
+                
+                switchView('inventories');
+            } catch (error) {
+                document.getElementById('main-container').innerHTML = `<p style="text-align:center; color: var(--accent-gold);">Données inaccessibles. ${error.message}</p>`;
+            }
+        }
+
+        function switchView(view) {
+            currentView = view;
+            
+            // Mise à jour des boutons
+            document.querySelectorAll('.view-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${view}`).classList.add('active');
+
+            // Afficher/Cacher la barre de recherche et filtres
+            const tools = document.getElementById('tools-section');
+            if (view === 'stats') tools.style.display = 'none';
+            else tools.style.display = 'block';
+
+            applyFilters();
+        }
+
+        function setCategoryFilter(cat) {
+            currentCat = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            applyFilters();
+        }
+
+        function applyFilters() {
+            if (!globalHerbarium) return;
+            const container = document.getElementById('main-container');
+            container.innerHTML = "";
+
+            if (currentView === 'stats') {
+                renderStats(container);
+                return;
+            }
+
+            const sourceData = currentView === 'inventories' ? globalHerbarium.inventories : globalHerbarium.compost;
+            const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+            
+            // Mise à jour du Sommaire
+            const navContainer = document.getElementById('quick-nav-container');
+            navContainer.innerHTML = "";
+            for (const ownerName of Object.keys(sourceData)) {
+                const anchorId = 'inv-' + ownerName.replace(/\s+/g, '-').toLowerCase();
+                navContainer.innerHTML += `<a href="#${anchorId}" class="quick-nav-link">${ownerName}</a>`;
+            }
+
+            // Rendu des clans
+            for (const [ownerName, invData] of Object.entries(sourceData)) {
+                let plantsToRender = [];
+                const dataIterable = currentView === 'inventories' ? invData.stocks : invData.plants;
+
+                for (const [plantName, plantData] of Object.entries(dataIterable)) {
+                    const codex = getCodex(plantName);
+                    
+                    // 1. Filtre Catégorie
+                    if (currentCat !== 'all' && codex.cat !== currentCat) continue;
+                    // 2. Filtre Recherche
+                    if (searchQuery !== "" && !plantName.toLowerCase().includes(searchQuery)) continue;
+
+                    plantsToRender.push({ name: plantName, data: plantData, codex: codex });
+                }
+
+                if (plantsToRender.length === 0) continue;
+
+                const section = document.createElement('section');
+                section.className = "clan-section";
+                section.id = 'inv-' + ownerName.replace(/\s+/g, '-').toLowerCase();
+
+                let cardsHTML = plantsToRender.map(p => {
+                    let qty = currentView === 'inventories' ? p.data.qty : p.data;
+                    let pct = Math.min((qty / MAX_PLANT_LIMIT) * 100, 100);
+                    let colorClass = qty <= 5 ? "stock-low" : (qty <= 10 ? "stock-medium" : "stock-good");
+                    let compostClass = currentView === 'compost' ? "compost" : "";
+
+                    let warningHTML = "";
+                    if (currentView === 'inventories' && p.data.urgent > 0) {
+                        warningHTML = `<div class="warning-expiry">⚠️ ${p.data.urgent} périme(nt) bientôt !</div>`;
+                    }
+                    if (currentView === 'compost') {
+                        warningHTML = `<div class="warning-expiry" style="color: #94a3b8; border-color: #94a3b8; background: rgba(148,163,184,0.1);">🍂 Plante périmée. À jeter.</div>`;
+                    }
+
+                    // On passe les données en JSON stringifié pour pouvoir les récupérer au clique
+                    const safeData = currentView === 'inventories' ? encodeURIComponent(JSON.stringify(p.data.lots)) : "[]";
+
+                    return `
+                        <div class="plant-card ${compostClass}" onclick="openPanel('${p.name}', '${ownerName}', '${safeData}')">
+                            <div class="plant-header">
+                                <div class="plant-icon">${p.codex.icon}</div>
+                                <div class="plant-qty">${qty}</div>
+                            </div>
+                            <span class="plant-cat-badge cat-${p.codex.cat}">${p.codex.cat}</span>
+                            <h4 class="plant-name">${p.name}</h4>
+                            <div class="stock-bar-bg">
+                                <div class="stock-bar-fill ${colorClass}" style="width: ${pct}%"></div>
+                            </div>
+                            <div class="plant-desc">${p.codex.desc}</div>
+                            ${warningHTML}
+                        </div>
+                    `;
+                }).join('');
+
+                section.innerHTML = `
+                    <div class="clan-header">
+                        <h2>${currentView === 'compost' ? 'Poubelle' : 'Tanière'} : ${ownerName}</h2>
+                    </div>
+                    <div class="herb-grid">${cardsHTML}</div>
+                `;
+                container.appendChild(section);
+            }
+
+            if (container.innerHTML === "") {
+                container.innerHTML = `<p style="text-align:center; color: var(--text-dim); margin-top: 2rem;">Aucune plante ne correspond à cette recherche.</p>`;
+            }
+        }
+
+        function renderStats(container) {
+            const statsData = globalHerbarium.healer_stats;
+            if (!statsData || Object.keys(statsData).length === 0) {
+                container.innerHTML = `<p style="text-align:center;">Aucune donnée de guérisseur disponible.</p>`;
+                return;
+            }
+
+            for (const [clanName, healers] of Object.entries(statsData)) {
+                const section = document.createElement('section');
+                section.className = "clan-section";
+                
+                let cardsHTML = healers.map(h => `
+                    <div class="healer-card">
+                        <img src="assets/photos/${h.name}.png" style="width:80px; height:80px; border-radius:50%; border:2px solid var(--accent-gold); margin-bottom:10px; object-fit:cover;" onerror="this.src='https://via.placeholder.com/80/141414/c5a059?text=🩺'">
+                        <h3>${h.name}</h3>
+                        <div class="stat-row"><span>🌱 Cueillettes</span> <span>${h.stats.cueillettes}</span></div>
+                        <div class="stat-row"><span>💚 Soins Réussis</span> <span style="color:#10b981;">${h.stats.soins_reussis}</span></div>
+                        <div class="stat-row"><span>💔 Soins Ratés</span> <span style="color:#ef4444;">${h.stats.soins_rates}</span></div>
+                    </div>
+                `).join('');
+
+                section.innerHTML = `
+                    <div class="clan-header"><h2>Infirmerie : ${clanName}</h2></div>
+                    <div class="character-grid">${cardsHTML}</div>
+                `;
+                container.appendChild(section);
+            }
+        }
+
+        // --- GESTION DU PANNEAU LATÉRAL ---
+        function openPanel(plantName, ownerName, encodedLots) {
+            if (currentView === 'compost') return; // Pas de panneau pour le compost
+            
+            const codex = getCodex(plantName);
+            const lots = JSON.parse(decodeURIComponent(encodedLots));
+
+            document.getElementById('panel-plant-icon').innerText = codex.icon;
+            document.getElementById('panel-plant-name').innerText = plantName;
+            document.getElementById('panel-plant-owner').innerText = ownerName;
+            document.getElementById('panel-plant-desc').innerText = codex.desc;
+            
+            const catBadge = document.getElementById('panel-plant-cat');
+            catBadge.innerText = codex.cat;
+            catBadge.className = `plant-cat-badge cat-${codex.cat}`;
+
+            let totalQty = 0;
+            const lotsContainer = document.getElementById('panel-lots-container');
+            lotsContainer.innerHTML = "";
+
+            if (lots.length === 0) {
+                lotsContainer.innerHTML = `<p style="text-align:center; color: var(--text-dim); font-style: italic;">Historique indisponible.</p>`;
+            } else {
+                lots.forEach(lot => {
+                    totalQty += lot.qty;
+                    const addDate = formatDate(lot.added_at);
+                    const expDate = formatDate(lot.expires_at);
+                    
+                    lotsContainer.innerHTML += `
+                        <div class="lot-item">
+                            <div class="lot-qty">${lot.qty}x</div>
+                            <div class="lot-details">
+                                <span style="color: var(--text-main);">Ajouté le ${addDate}</span><br>
+                                par ${lot.added_by}<br>
+                                <span style="color: #ef4444; font-size: 0.75rem;">Expire le ${expDate}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('panel-total-qty').innerText = totalQty;
+
+            document.getElementById('side-panel').classList.add('open');
+            document.getElementById('panel-overlay').classList.add('active');
+        }
+
+        function closePanel() {
+            document.getElementById('side-panel').classList.remove('open');
+            document.getElementById('panel-overlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

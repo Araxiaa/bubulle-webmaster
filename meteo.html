@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Station Météo — Chroniques des Clans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Retour au Hub</a>
+        
+        <div class="page-header">
+            <h1 class="cinzel">L'Observatoire de Bubulle</h1>
+            <p id="rp-date-display" style="font-style: italic; color: var(--text-dim);">Lecture des cieux en cours...</p>
+        </div>
+
+        <div id="weather-container">
+            </div>
+    </div>
+
+    <script>
+        // Fonction pour choisir l'icône selon la description
+        function getWeatherIcon(desc, event) {
+            const d = desc.toLowerCase();
+            if (event !== "Normal") return "⚠️";
+            if (d.includes("soleil") || d.includes("beau")) return "☀️";
+            if (d.includes("pluie") || d.includes("averse")) return "🌧️";
+            if (d.includes("nuage") || d.includes("couvert")) return "☁️";
+            if (d.includes("neige") || d.includes("froid")) return "❄️";
+            if (d.includes("orage") || d.includes("tonnerre")) return "⚡";
+            if (d.includes("vent") || d.includes("brise")) return "🌬️";
+            return "✨";
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const response = await fetch('data/dashboard.json');
+                const data = await response.json();
+                const container = document.getElementById('weather-container');
+
+                // 1. Date RP
+                const rp = data.meta.rp_date;
+                document.getElementById('rp-date-display').innerText = `Année ${rp.year} • ${rp.season} • ${rp.month} (Semaine ${rp.week})`;
+
+                if (!data.weather || data.weather.current.length === 0) {
+                    container.innerHTML = `<p style="text-align:center; color: var(--text-dim);">Le ciel est vide... Aucune météo n'a été programmée par le staff.</p>`;
+                    return;
+                }
+
+                // 2. Météo Actuelle (On prend la "Global" en priorité)
+                const current = data.weather.current;
+                const globalWeather = current.find(w => w.clan === "Global") || current[0];
+                const eventClass = globalWeather.event_type === "Normal" ? "event-normal" : (globalWeather.event_type.includes("Alerte") ? "event-alerte" : "event-special");
+
+                let html = `
+                    <div class="weather-current-box">
+                        <span class="weather-icon-large">${getWeatherIcon(globalWeather.weather_desc, globalWeather.event_type)}</span>
+                        <div class="weather-badge-event ${eventClass}">${globalWeather.event_type}</div>
+                        <div class="weather-desc-main">${globalWeather.weather_desc}</div>
+                        <p style="color: var(--text-dim);">Ciel observé au-dessus de la forêt (Semaine ${rp.week})</p>
+                    </div>
+                `;
+
+                // 3. Prévisions
+                if (data.weather.forecast && data.weather.forecast.length > 0) {
+                    html += `<h2 class="cinzel" style="color: var(--accent-gold); margin-bottom: 2rem; text-align: center;">Prévisions des lunes futures</h2>`;
+                    html += `<div class="forecast-grid">`;
+                    data.weather.forecast.forEach(f => {
+                        html += `
+                            <div class="forecast-card">
+                                <div class="forecast-date">An ${f.rp_year} • Mois ${f.rp_month_index} • Sem ${f.rp_week}</div>
+                                <div style="font-size: 2rem; margin-bottom: 10px;">${getWeatherIcon(f.weather_desc, f.event_type)}</div>
+                                <h4 style="color: var(--text-main); margin-bottom: 5px;">${f.clan}</h4>
+                                <p style="font-size: 0.9rem; color: var(--text-dim); font-style: italic;">"${f.weather_desc}"</p>
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+                }
+
+                container.innerHTML = html;
+            } catch (error) {
+                document.getElementById('weather-container').innerHTML = `<p style="text-align:center; color: var(--accent-gold);">Impossible de lire le ciel stellaire.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

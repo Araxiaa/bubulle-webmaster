@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-05-09T10:00:51.310701+00:00",
+    "exported_at": "2026-05-09T22:00:51.279919+00:00",
     "rp_date": null
   },
   "clans": {
@@ -112,7 +112,7 @@
           "name": "Boule d'Ecorce",
           "rank": "Chaton",
           "gender": "Mâle",
-          "age": 4,
+          "age": 3,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=B",
           "hp": 10,
           "max_hp": 10,
@@ -127,6 +127,17 @@
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=I",
           "hp": 50,
           "max_hp": 50,
+          "is_dead": false,
+          "death_cause": null
+        },
+        {
+          "name": "Petit Lys",
+          "rank": "Chaton",
+          "gender": "Mâle",
+          "age": 3,
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
+          "hp": 10,
+          "max_hp": 10,
           "is_dead": false,
           "death_cause": null
         }
@@ -156,9 +167,9 @@
         }
       ],
       "stats": {
-        "total": 4,
-        "vivants": 4,
-        "males": 3,
+        "total": 5,
+        "vivants": 5,
+        "males": 4,
         "femelles": 1,
         "nb": 0
       }

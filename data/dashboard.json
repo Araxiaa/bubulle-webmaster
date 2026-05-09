@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-05-08T22:01:13.180595+00:00",
+    "exported_at": "2026-05-09T10:00:51.310701+00:00",
     "rp_date": null
   },
   "clans": {
@@ -136,7 +136,7 @@
           "name": "Chant de Grenouille",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 36,
+          "age": 37,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=C",
           "hp": 10,
           "max_hp": 10,
@@ -147,7 +147,7 @@
           "name": "Charme de Corneille",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 36,
+          "age": 37,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=C",
           "hp": 10,
           "max_hp": 10,

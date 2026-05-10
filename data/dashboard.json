@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-05-10T10:00:51.281922+00:00",
+    "exported_at": "2026-05-10T22:00:51.313894+00:00",
     "rp_date": null
   },
   "clans": {
@@ -123,7 +123,7 @@
           "name": "Illusion du Puceron",
           "rank": "Guérisseur",
           "gender": "Mâle",
-          "age": 20,
+          "age": 21,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=I",
           "hp": 50,
           "max_hp": 50,

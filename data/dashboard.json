@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-05-18T13:06:04.391186+00:00",
+    "exported_at": "2026-05-19T13:06:04.410396+00:00",
     "rp_date": null
   },
   "clans": {
@@ -11,7 +11,7 @@
           "name": "Aube du Myosotis",
           "rank": "Guérisseur",
           "gender": "Femelle",
-          "age": 47,
+          "age": 48,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=A",
           "hp": 50,
           "max_hp": 50,
@@ -44,7 +44,7 @@
           "name": "Patte de Ruisseau",
           "rank": "Chaton",
           "gender": "Femelle",
-          "age": 3,
+          "age": 4,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
@@ -55,7 +55,7 @@
           "name": "Petit Galopin",
           "rank": "Chaton",
           "gender": "Mâle",
-          "age": 4,
+          "age": 5,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
@@ -259,7 +259,7 @@
           "name": "Peggy",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 64,
+          "age": 65,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 50,
           "max_hp": 50,

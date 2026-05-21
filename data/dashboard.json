@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-05-21T01:06:04.397448+00:00",
+    "exported_at": "2026-05-21T13:06:04.409544+00:00",
     "rp_date": null
   },
   "clans": {
@@ -191,7 +191,7 @@
           "name": "Petite Mygale",
           "rank": "Chaton",
           "gender": "Femelle",
-          "age": 5,
+          "age": 6,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,

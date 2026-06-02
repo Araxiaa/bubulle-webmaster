@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-02T20:32:32.100594+00:00",
+    "exported_at": "2026-06-02T21:35:30.358420+00:00",
     "rp_date": null
   },
   "clans": {
@@ -131,6 +131,17 @@
           "death_cause": null
         },
         {
+          "name": "Nuance de Lait",
+          "rank": "Guerrier",
+          "gender": "Mâle",
+          "age": 148,
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=N",
+          "hp": 50,
+          "max_hp": 50,
+          "is_dead": false,
+          "death_cause": null
+        },
+        {
           "name": "Petit Lys",
           "rank": "Chaton",
           "gender": "Mâle",
@@ -178,9 +189,9 @@
         }
       ],
       "stats": {
-        "total": 6,
-        "vivants": 6,
-        "males": 4,
+        "total": 7,
+        "vivants": 7,
+        "males": 5,
         "femelles": 2,
         "nb": 0
       }

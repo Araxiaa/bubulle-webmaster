@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-02T21:38:50.156148+00:00",
+    "exported_at": "2026-06-02T22:41:07.037650+00:00",
     "rp_date": null
   },
   "clans": {
@@ -132,9 +132,9 @@
         },
         {
           "name": "Nuance de Lait",
-          "rank": "Guerrier",
+          "rank": "Reine",
           "gender": "Mâle",
-          "age": 148,
+          "age": 74,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=N",
           "hp": 50,
           "max_hp": 50,
@@ -156,7 +156,7 @@
           "name": "Truffe Champêtre",
           "rank": "Chef",
           "gender": "Femelle",
-          "age": 142,
+          "age": 72,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=T",
           "hp": 60,
           "max_hp": 60,

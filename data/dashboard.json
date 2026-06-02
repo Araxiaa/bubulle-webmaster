@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-02T22:41:07.037650+00:00",
+    "exported_at": "2026-06-02T23:33:31.992211+00:00",
     "rp_date": null
   },
   "clans": {
@@ -281,7 +281,7 @@
           "name": "Peggy",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 67,
+          "age": 62,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 50,
           "max_hp": 50,

@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-05-24T13:06:04.395115+00:00",
+    "exported_at": "2026-06-02T15:42:55.328706+00:00",
     "rp_date": null
   },
   "clans": {
@@ -11,7 +11,7 @@
           "name": "Aube du Myosotis",
           "rank": "Guérisseur",
           "gender": "Femelle",
-          "age": 48,
+          "age": 50,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=A",
           "hp": 50,
           "max_hp": 50,
@@ -22,7 +22,7 @@
           "name": "Etoile de Framboisier",
           "rank": "Chef",
           "gender": "Mâle",
-          "age": 23,
+          "age": 24,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 60,
           "max_hp": 60,
@@ -33,7 +33,7 @@
           "name": "Nuage de Nénuphar",
           "rank": "Apprenti",
           "gender": "Femelle",
-          "age": 13,
+          "age": 14,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=N",
           "hp": 25,
           "max_hp": 25,
@@ -44,7 +44,7 @@
           "name": "Patte de Ruisseau",
           "rank": "Chaton",
           "gender": "Femelle",
-          "age": 4,
+          "age": 6,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
@@ -55,7 +55,7 @@
           "name": "Petit Galopin",
           "rank": "Chaton",
           "gender": "Mâle",
-          "age": 5,
+          "age": 7,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
@@ -68,7 +68,7 @@
           "name": "Douce Sève",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 56,
+          "age": 57,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=D",
           "hp": 10,
           "max_hp": 10,
@@ -79,7 +79,7 @@
           "name": "Echo des Bois",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 48,
+          "age": 49,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 10,
           "max_hp": 10,
@@ -90,7 +90,7 @@
           "name": "Racine de Bouleau",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 56,
+          "age": 57,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=R",
           "hp": 10,
           "max_hp": 10,
@@ -112,7 +112,7 @@
           "name": "Boule d'Ecorce",
           "rank": "Chaton",
           "gender": "Mâle",
-          "age": 5,
+          "age": 6,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=B",
           "hp": 10,
           "max_hp": 10,
@@ -123,7 +123,7 @@
           "name": "Illusion du Puceron",
           "rank": "Guérisseur",
           "gender": "Mâle",
-          "age": 22,
+          "age": 24,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=I",
           "hp": 50,
           "max_hp": 50,
@@ -134,7 +134,7 @@
           "name": "Petit Lys",
           "rank": "Chaton",
           "gender": "Mâle",
-          "age": 5,
+          "age": 6,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
@@ -147,7 +147,7 @@
           "name": "Chant de Grenouille",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 39,
+          "age": 40,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=C",
           "hp": 10,
           "max_hp": 10,
@@ -158,7 +158,7 @@
           "name": "Charme de Corneille",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 39,
+          "age": 40,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=C",
           "hp": 10,
           "max_hp": 10,
@@ -180,7 +180,7 @@
           "name": "Chant de Cigale",
           "rank": "Guérisseur",
           "gender": "Femelle",
-          "age": 13,
+          "age": 15,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=C",
           "hp": 50,
           "max_hp": 50,
@@ -191,7 +191,7 @@
           "name": "Petite Mygale",
           "rank": "Chaton",
           "gender": "Femelle",
-          "age": 6,
+          "age": 7,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
@@ -204,7 +204,7 @@
           "name": "Eclat Sombre",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 61,
+          "age": 62,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 10,
           "max_hp": 10,
@@ -215,7 +215,7 @@
           "name": "Griffe de Silex",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 61,
+          "age": 62,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=G",
           "hp": 10,
           "max_hp": 10,
@@ -226,7 +226,7 @@
           "name": "Reflet d'Ambre",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 58,
+          "age": 59,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=R",
           "hp": 10,
           "max_hp": 10,
@@ -237,7 +237,7 @@
           "name": "Souffle de Brume",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 45,
+          "age": 46,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=S",
           "hp": 10,
           "max_hp": 10,
@@ -259,7 +259,7 @@
           "name": "Peggy",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 65,
+          "age": 67,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 50,
           "max_hp": 50,
@@ -278,49 +278,7 @@
     }
   },
   "herbarium": {
-    "inventories": {
-      "Clan du Tonnerre": {
-        "total": 10,
-        "stocks": {
-          "Graines de Digitale": {
-            "qty": 2,
-            "urgent": 0,
-            "lots": [
-              {
-                "qty": 2,
-                "added_by": "Petite Mygale",
-                "added_at": "2026-04-28 23:43:04",
-                "expires_at": "2026-05-28 23:43:04"
-              }
-            ]
-          },
-          "Cataire": {
-            "qty": 2,
-            "urgent": 0,
-            "lots": [
-              {
-                "qty": 2,
-                "added_by": "Petite Mygale",
-                "added_at": "2026-04-28 23:43:18",
-                "expires_at": "2026-05-28 23:43:18"
-              }
-            ]
-          },
-          "Mousse": {
-            "qty": 6,
-            "urgent": 0,
-            "lots": [
-              {
-                "qty": 6,
-                "added_by": "Petite Mygale",
-                "added_at": "2026-04-28 23:43:32",
-                "expires_at": "2026-05-28 23:43:32"
-              }
-            ]
-          }
-        }
-      }
-    },
+    "inventories": {},
     "compost": {},
     "healer_stats": {}
   },

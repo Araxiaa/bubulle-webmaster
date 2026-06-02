@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-02T18:23:57.159788+00:00",
+    "exported_at": "2026-06-02T19:10:09.877882+00:00",
     "rp_date": null
   },
   "clans": {
@@ -140,6 +140,17 @@
           "max_hp": 10,
           "is_dead": false,
           "death_cause": null
+        },
+        {
+          "name": "Truffe Champêtre",
+          "rank": "Chef",
+          "gender": "Femelle",
+          "age": 142,
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=T",
+          "hp": 60,
+          "max_hp": 60,
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "npcs": [
@@ -167,10 +178,10 @@
         }
       ],
       "stats": {
-        "total": 5,
-        "vivants": 5,
+        "total": 6,
+        "vivants": 6,
         "males": 4,
-        "femelles": 1,
+        "femelles": 2,
         "nb": 0
       }
     },

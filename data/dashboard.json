@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-03T11:33:31.989041+00:00",
+    "exported_at": "2026-06-03T23:33:32.002079+00:00",
     "rp_date": null
   },
   "clans": {
@@ -226,7 +226,7 @@
           "name": "Eclat Sombre",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 62,
+          "age": 63,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 10,
           "max_hp": 10,
@@ -237,7 +237,7 @@
           "name": "Griffe de Silex",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 62,
+          "age": 63,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=G",
           "hp": 10,
           "max_hp": 10,
@@ -248,7 +248,7 @@
           "name": "Reflet d'Ambre",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 59,
+          "age": 60,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=R",
           "hp": 10,
           "max_hp": 10,
@@ -259,7 +259,7 @@
           "name": "Souffle de Brume",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 46,
+          "age": 47,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=S",
           "hp": 10,
           "max_hp": 10,

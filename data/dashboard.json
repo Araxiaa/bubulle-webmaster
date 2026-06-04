@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-04T13:15:38.754110+00:00",
+    "exported_at": "2026-06-04T19:37:35.795558+00:00",
     "rp_date": null
   },
   "clans": {
@@ -79,7 +79,7 @@
           "name": "Echo des Bois",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 49,
+          "age": 50,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 10,
           "max_hp": 10,

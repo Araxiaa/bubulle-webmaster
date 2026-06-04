@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-04T01:15:38.755961+00:00",
+    "exported_at": "2026-06-04T13:15:38.754110+00:00",
     "rp_date": null
   },
   "clans": {
@@ -156,7 +156,7 @@
           "name": "Truffe Champêtre",
           "rank": "Chef",
           "gender": "Femelle",
-          "age": 72,
+          "age": 71,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=T",
           "hp": 60,
           "max_hp": 60,
@@ -210,10 +210,21 @@
           "death_cause": null
         },
         {
+          "name": "Etoile d'Ocre",
+          "rank": "Chef",
+          "gender": "Mâle",
+          "age": 40,
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
+          "hp": 60,
+          "max_hp": 60,
+          "is_dead": false,
+          "death_cause": null
+        },
+        {
           "name": "Petite Mygale",
           "rank": "Chaton",
           "gender": "Femelle",
-          "age": 7,
+          "age": 8,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
@@ -268,9 +279,9 @@
         }
       ],
       "stats": {
-        "total": 6,
-        "vivants": 6,
-        "males": 3,
+        "total": 7,
+        "vivants": 7,
+        "males": 4,
         "femelles": 3,
         "nb": 0
       }

@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-07T06:39:42.093728+00:00",
+    "exported_at": "2026-06-07T18:39:42.077910+00:00",
     "rp_date": null
   },
   "clans": {
@@ -123,7 +123,7 @@
           "name": "Illusion du Puceron",
           "rank": "Guérisseur",
           "gender": "Mâle",
-          "age": 24,
+          "age": 25,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=I",
           "hp": 50,
           "max_hp": 50,
@@ -202,7 +202,7 @@
           "name": "Chant de Cigale",
           "rank": "Guérisseur",
           "gender": "Femelle",
-          "age": 15,
+          "age": 16,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=C",
           "hp": 50,
           "max_hp": 50,

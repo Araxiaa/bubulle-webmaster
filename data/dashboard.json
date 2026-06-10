@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-09T18:39:42.063342+00:00",
+    "exported_at": "2026-06-10T06:39:42.061349+00:00",
     "rp_date": null
   },
   "clans": {
@@ -134,7 +134,7 @@
           "name": "Nuance de Lait",
           "rank": "Reine",
           "gender": "Mâle",
-          "age": 74,
+          "age": 75,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=N",
           "hp": 50,
           "max_hp": 50,

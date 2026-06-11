@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-11T18:39:42.081348+00:00",
+    "exported_at": "2026-06-11T23:07:23.834068+00:00",
     "rp_date": null
   },
   "clans": {
@@ -252,6 +252,17 @@
           "max_hp": 50,
           "is_dead": false,
           "death_cause": null
+        },
+        {
+          "name": "Tige de Chèvrefeuille",
+          "rank": "Guerrier",
+          "gender": "Femelle",
+          "age": 39,
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=T",
+          "hp": 50,
+          "max_hp": 50,
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "npcs": [
@@ -301,10 +312,10 @@
         }
       ],
       "stats": {
-        "total": 9,
-        "vivants": 9,
+        "total": 10,
+        "vivants": 10,
         "males": 4,
-        "femelles": 5,
+        "femelles": 6,
         "nb": 0
       }
     },

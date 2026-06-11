@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-11T06:39:42.078030+00:00",
+    "exported_at": "2026-06-11T18:39:42.081348+00:00",
     "rp_date": null
   },
   "clans": {
@@ -79,7 +79,7 @@
           "name": "Echo des Bois",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 50,
+          "age": 51,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 10,
           "max_hp": 10,
@@ -221,10 +221,21 @@
           "death_cause": null
         },
         {
+          "name": "Nuage du Choucas",
+          "rank": "Guerrier",
+          "gender": "Femelle",
+          "age": 33,
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=N",
+          "hp": 50,
+          "max_hp": 50,
+          "is_dead": false,
+          "death_cause": null
+        },
+        {
           "name": "Petite Mygale",
           "rank": "Chaton",
           "gender": "Femelle",
-          "age": 8,
+          "age": 9,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 10,
           "max_hp": 10,
@@ -290,10 +301,10 @@
         }
       ],
       "stats": {
-        "total": 8,
-        "vivants": 8,
+        "total": 9,
+        "vivants": 9,
         "males": 4,
-        "femelles": 4,
+        "femelles": 5,
         "nb": 0
       }
     },

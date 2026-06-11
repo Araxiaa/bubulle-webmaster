@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-10T18:39:42.056888+00:00",
+    "exported_at": "2026-06-11T06:39:42.078030+00:00",
     "rp_date": null
   },
   "clans": {
@@ -156,7 +156,7 @@
           "name": "Truffe Champêtre",
           "rank": "Chef",
           "gender": "Femelle",
-          "age": 71,
+          "age": 72,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=T",
           "hp": 60,
           "max_hp": 60,
@@ -213,7 +213,7 @@
           "name": "Etoile d'Ocre",
           "rank": "Chef",
           "gender": "Mâle",
-          "age": 40,
+          "age": 41,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 60,
           "max_hp": 60,
@@ -230,6 +230,17 @@
           "max_hp": 10,
           "is_dead": false,
           "death_cause": null
+        },
+        {
+          "name": "Reflet de Primevère",
+          "rank": "Guerrier",
+          "gender": "Femelle",
+          "age": 39,
+          "photo": "https://via.placeholder.com/150/141414/c5a059?text=R",
+          "hp": 50,
+          "max_hp": 50,
+          "is_dead": false,
+          "death_cause": null
         }
       ],
       "npcs": [
@@ -237,7 +248,7 @@
           "name": "Eclat Sombre",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 63,
+          "age": 64,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=E",
           "hp": 10,
           "max_hp": 10,
@@ -248,7 +259,7 @@
           "name": "Griffe de Silex",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 63,
+          "age": 64,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=G",
           "hp": 10,
           "max_hp": 10,
@@ -259,7 +270,7 @@
           "name": "Reflet d'Ambre",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 60,
+          "age": 61,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=R",
           "hp": 10,
           "max_hp": 10,
@@ -270,7 +281,7 @@
           "name": "Souffle de Brume",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 47,
+          "age": 48,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=S",
           "hp": 10,
           "max_hp": 10,
@@ -279,10 +290,10 @@
         }
       ],
       "stats": {
-        "total": 7,
-        "vivants": 7,
+        "total": 8,
+        "vivants": 8,
         "males": 4,
-        "femelles": 3,
+        "femelles": 4,
         "nb": 0
       }
     },
@@ -292,7 +303,7 @@
           "name": "Peggy",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 62,
+          "age": 63,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=P",
           "hp": 50,
           "max_hp": 50,

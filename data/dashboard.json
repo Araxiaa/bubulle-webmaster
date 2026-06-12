@@ -1,7 +1,7 @@
 {
   "meta": {
     "bot_name": "Bubulle",
-    "exported_at": "2026-06-12T20:49:41.352016+00:00",
+    "exported_at": "2026-06-12T21:05:26.699062+00:00",
     "rp_date": null
   },
   "clans": {
@@ -68,7 +68,7 @@
           "name": "Douce Sève",
           "rank": "Guerrier",
           "gender": "Femelle",
-          "age": 58,
+          "age": 59,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=D",
           "hp": 10,
           "max_hp": 10,
@@ -90,7 +90,7 @@
           "name": "Racine de Bouleau",
           "rank": "Guerrier",
           "gender": "Mâle",
-          "age": 58,
+          "age": 59,
           "photo": "https://via.placeholder.com/150/141414/c5a059?text=R",
           "hp": 10,
           "max_hp": 10,
